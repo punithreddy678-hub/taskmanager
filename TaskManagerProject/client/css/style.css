@@ -1,0 +1,139 @@
+/* ===== GLOBAL BACKGROUND (NO MORE GRAY) ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0b0c14, #141625);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Animated neon glow background */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 20% 20%, #31EC56 0%, transparent 35%),
+              radial-gradient(circle at 80% 30%, #EF036C 0%, transparent 35%),
+              radial-gradient(circle at 50% 80%, #EE72F8 0%, transparent 35%);
+  animation: floatGlow 10s infinite ease-in-out;
+  opacity: 0.18;
+  z-index: -1;
+}
+
+@keyframes floatGlow {
+  0% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-5%, -5%) scale(1.1); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+/* Container */
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Title */
+h1 {
+  color: #31EC56;
+  text-shadow: 0 0 15px #31EC56, 0 0 30px #31EC56;
+  animation: fadeDown 1s ease-in-out;
+}
+
+/* Inputs */
+input, select {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #0f111a;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #EE72F8;
+  box-shadow: 0 0 10px #EE72F8;
+}
+
+/* Button */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #EF036C, #EE72F8);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #EE72F8;
+}
+
+/* Board */
+.board {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* Columns (NO GRAY) */
+.column {
+  width: 30%;
+  padding: 15px;
+  border-radius: 15px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+}
+
+.column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(238, 114, 248, 0.2);
+}
+
+/* Task cards */
+.task {
+  background: rgba(10, 12, 20, 0.8);
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+  animation: popIn 0.3s ease-in-out;
+  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.task:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px #31EC56;
+}
+
+/* Priority colors */
+.low {
+  border-left: 5px solid #31EC56;
+}
+
+.medium {
+  border-left: 5px solid #EE72F8;
+}
+
+.high {
+  border-left: 5px solid #EF036C;
+}
+
+/* Animations */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
