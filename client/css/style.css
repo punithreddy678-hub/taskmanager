@@ -137,3 +137,40 @@ button:hover {
   from { transform: translateY(-20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+.ai-box {
+
+  margin-top: 30px;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.1);
+
+  backdrop-filter: blur(10px);
+
+}
+
+#aiInput {
+
+  width: 80%;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  border: none;
+
+}
+
+#aiResponse {
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  border-radius: 10px;
+
+  background: rgba(0,0,0,0.2);
+
+}

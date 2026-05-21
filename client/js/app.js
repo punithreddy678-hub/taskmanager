@@ -90,3 +90,27 @@ async function deleteTask(id) {
 }
 
 loadTasks();
+async function askAI() {
+
+  const message =
+    document.getElementById("aiInput").value;
+
+  const response = await fetch(
+    "https://taskmanager-3ota.onrender.com/api/ai",
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({ message })
+    }
+  );
+
+  const data = await response.json();
+
+  document.getElementById(
+    "aiResponse"
+  ).innerHTML = data.reply;
+}
