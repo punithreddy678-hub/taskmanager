@@ -4,7 +4,9 @@ const router = express.Router();
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(
+  process.env.GEMINI_API_KEY
+);
 
 router.post("/", async (req, res) => {
 
@@ -16,9 +18,11 @@ router.post("/", async (req, res) => {
       model: "gemini-1.5-flash"
     });
 
-    const result = await model.generateContent(message);
+    const result =
+      await model.generateContent(message);
 
-    const response = result.response.text();
+    const response =
+      await result.response.text();
 
     res.json({
       reply: response
@@ -26,8 +30,10 @@ router.post("/", async (req, res) => {
 
   } catch (error) {
 
+    console.log(error);
+
     res.status(500).json({
-      error: "AI Error"
+      reply: "AI Error"
     });
 
   }
