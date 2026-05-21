@@ -2,9 +2,11 @@ const express = require("express");
 
 const router = express.Router();
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { GoogleGenerativeAI } =
+require("@google/generative-ai");
 
-const genAI = new GoogleGenerativeAI(
+const genAI =
+new GoogleGenerativeAI(
   process.env.GEMINI_API_KEY
 );
 
@@ -14,15 +16,16 @@ router.post("/", async (req, res) => {
 
     const { message } = req.body;
 
-    const model = genAI.getGenerativeModel({
+    const model =
+    genAI.getGenerativeModel({
       model: "gemini-1.5-flash"
     });
 
     const result =
-      await model.generateContent(message);
+    await model.generateContent(message);
 
     const response =
-      await result.response.text();
+    await result.response.text();
 
     res.json({
       reply: response
